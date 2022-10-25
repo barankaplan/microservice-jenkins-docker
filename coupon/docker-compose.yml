@@ -1,0 +1,36 @@
+version: "3"
+services:
+  product-app:
+    container_name: kaplans-product-app
+    image: kaplan89/productapp
+    #    restart: on-failure
+    ports:
+      - "10666:9090"
+    depends_on:
+      - kaplans-postgres
+      - coupon-app
+  coupon-app:
+    container_name: kaplans-coupon-app
+    image: kaplan89/couponapp
+    #    restart: on-failure
+    ports:
+      - "10555:9091"
+    depends_on:
+      - kaplans-postgres
+  kaplans-postgres:
+    container_name: kaplans-postgres
+    image: postgres
+    #    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: deneme
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+
+
+

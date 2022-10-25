@@ -1,0 +1,18 @@
+## super set of json
+##key value
+#customerName: Baran
+#orderId: 123
+#date: 12/12/2020
+#shipped: false
+#moreData: null
+##list
+#products:
+#  #list of an obj
+#  - name: macbook
+#  #basic obj
+#    price: 15
+#  - name: samsung
+##dictionary
+#address:
+#  street: SpringField
+#  city: Austinw
